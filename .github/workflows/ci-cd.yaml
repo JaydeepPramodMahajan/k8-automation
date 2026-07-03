@@ -1,0 +1,19 @@
+name: "Ci-CD pipeline"
+on: 
+    push:
+        branches:
+            - master
+            - main
+jobs:
+    git-automation:
+        runs-on: ubuntu-latest
+        steps:
+            - name: "Checkout/Build"
+              uses: actions/checkout@v4
+            - name: "Setup-python"
+              uses: actions/setup-python@v5
+              with:
+               python-version: "3.14"
+
+            - name: "Install-Dependancies"
+              run : pip install --no-cache-dir -r requirements.txt 
