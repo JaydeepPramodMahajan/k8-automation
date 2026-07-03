@@ -1,0 +1,5 @@
+The Kubernetes Deployment Automation Platform is a cloud-native DevOps project that automates the deployment of containerized applications to a Kubernetes cluster.
+
+The platform enables developers to build Docker images, push them to Docker Hub, and automatically deploy updated application versions to Kubernetes using a CI/CD pipeline. It also supports Helm-based deployments, configuration management, rolling updates, and deployment rollback.
+
+The primary goal of the project is to eliminate manual deployment steps and provide a reliable, repeatable, and scalable deployment workflow following modern DevOps practices.
