@@ -23,4 +23,4 @@ jobs:
                 username: ${{secrets.DOCKER_USERNAME}}
                 password: ${{secrets.DOCKER_PASSWORD}}
             - name : Docker Build
-              run: docker build -t k8-automation-image:v1 -f Kubernetes Deployment Automation .
+              run: docker build -t k8-automation-image:v1 -f "Kubernetes Deployment Automation"\"Kubernetes Deployment Automation" .
