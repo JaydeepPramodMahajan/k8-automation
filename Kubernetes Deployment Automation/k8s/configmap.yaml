@@ -1,0 +1,16 @@
+#A ConfigMap is used to store configuration values separately from your application.
+#Contains settings that may change (app name, environment, URLs, etc.).
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: k8-config
+
+data:
+  APP_NAME: Kubernetes Autotmation
+  ENVIROMENT: Development
+
+#k8-config = {
+#    "APP_NAME": "Kubernetes Automation",
+#    "ENVIRONMENT": "Development"
+#}

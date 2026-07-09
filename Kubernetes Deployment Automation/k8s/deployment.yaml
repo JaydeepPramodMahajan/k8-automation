@@ -6,7 +6,7 @@ metadata:
       created_by: JayMahajan
       app: k8-automation
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
         app: k8-automation
@@ -20,4 +20,44 @@ spec:
         image: jaypramodmahajan/k8-automation:v1
         imagePullPolicy: Always
         ports:
-        - containerPort: 8000
+          - containerPort: 8000
+
+        #enviroment variable
+        env: 
+        #Its creating a variabel
+        #To take the values from the runtime, not hardcoding it 
+        - name: APP_NAME #Variable name
+          valueFrom:
+            configMapKeyRef:
+              name: k8-config #Which config file
+              key: APP_NAME #Variable name from the config file
+        
+        - name: ENVIRONMENT
+          valueFrom:
+            configMapKeyRef:
+              name: k8-config
+              key: ENVIRONMENT
+
+
+        resources:
+          requests: #Minimum it wants
+            cpu: "100m" #requesting 0.1 CPU
+            memory: "128Mi" #128 MB RAM
+          limits: #Max upto
+            cpu: "250m"
+            memory: "256Mi"
+
+        livenessProbe: #to check that is my pod alive?
+          httpGet: #GET / (<--- path) request on port 8000
+            path: /
+            port: 8000
+          initialDelaySeconds: 10
+          periodSeconds: 10 #For every 10 sec
+
+        readinessProbe: #ready to serve user
+          httpGet:
+            path: /
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+  
